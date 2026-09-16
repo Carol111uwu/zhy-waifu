@@ -1,9 +1,1 @@
-export function obtenerValoresPredeterminadosModelo(modelo){
-  return {
-    temperatura:Number(modelo.temperaturaPredeterminada ?? 0.9),
-    dryMultiplier:Number(modelo.dryMultiplierPredeterminado ?? 0),
-    perfilLongitudRespuesta:modelo.perfilLongitudPredeterminado || 'muyLarga',
-    frecuenciaAccionesNarrativas:Number(modelo.frecuenciaAccionesPredeterminada ?? 0.7),
-    multiplicadorLongitud:1.5,
-  };
-}
+export function obtenerValoresPredeterminadosModelo(modelo){return {temperatura:Number(modelo.temperaturaPredeterminada??0.9),dryMultiplier:Number(modelo.dryMultiplierPredeterminado??0),topP:Number(modelo.topPPredeterminado??0.95),topK:Number(modelo.topKPredeterminado??40),frequencyPenalty:Number(modelo.frequencyPenaltyPredeterminado??0),presencePenalty:Number(modelo.presencePenaltyPredeterminado??0),perfilLongitudRespuesta:modelo.perfilLongitudPredeterminado||'muyLarga',frecuenciaAccionesNarrativas:Number(modelo.frecuenciaAccionesPredeterminada??0.7),multiplicadorLongitud:1.5};}

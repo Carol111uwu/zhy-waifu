@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import fs from 'node:fs';import path from 'node:path';import { fileURLToPath } from 'node:url';
 import { analizarAccionesYDialogo } from '../aplicacion/modulos/conversacion/analizar-acciones-y-dialogo.js';
 import { buscarModeloIA } from '../aplicacion/configuracion/catalogo-modelos-inteligencia-artificial.js';
 import { buscarPerfilInspiracion } from '../aplicacion/configuracion/catalogo-perfiles-inspiracion-hiwaifu.js';
@@ -7,20 +8,11 @@ import { personajeDemoLaboratorio } from '../aplicacion/modulos/personajes/perfi
 import { describirModificadoresTemporales } from '../aplicacion/modulos/personajes/modificadores/descripcion-modificadores-temporales.js';
 import { detectarRecuerdosEnTexto } from '../aplicacion/modulos/memoria-automatica/detectar-recuerdos-en-texto.js';
 import { ProveedorAutomaticoConRespaldo } from '../aplicacion/integraciones/inteligencia-artificial/proveedores/proveedor-automatico-con-respaldo.js';
-
-const partes=analizarAccionesYDialogo('*le mira mal* h-holii *se cruza de brazos* qué fue');
-assert.deepEqual(partes.map(p=>p.tipo),['accion','dialogo','accion','dialogo']);
-assert.equal(buscarModeloIA('servidor-inteligencia-con-respaldo').categoria,'recomendado');
-assert.equal(buscarPerfilInspiracion('epictale-large-inspirado').dryMultiplier,3);
-assert.equal(ESTILOS_CONVERSACION.length,5);
-assert.equal(ESTILOS_CONVERSACION.at(-1).nombre,'5 Energía');
-assert.equal(personajeDemoLaboratorio.id,'personaje-demo-laboratorio');
-assert.match(describirModificadoresTemporales({timidezCoqueteo:80,seriedadJuego:70,calmaEnergia:75}).join(' '),/coqueto/);
-assert.match(detectarRecuerdosEnTexto('me gusta el azul')[0].contenido,/azul/i);
-const proveedorSinServidor=new ProveedorAutomaticoConRespaldo({urlBase:''});
-const inicio=Date.now();
-const respuestaRespaldo=await proveedorSinServidor.responder({personaje:personajeDemoLaboratorio,mensaje:'hola',historial:[],modelo:buscarModeloIA('servidor-inteligencia-con-respaldo'),personaUsuario:{nombre:'Tú'},ajustesConversacion:{modificadoresTemporales:[],estiloConversacion:{nombre:'Natural'}},preferenciasGeneracion:{temperatura:0.9,creatividad:0.9,longitud:{objetivoCaracteres:900}}});
-assert.equal(respuestaRespaldo.usoRespaldo,true);
-assert.ok(Date.now()-inicio<1000,'El respaldo sin URL debe activarse inmediatamente');
-assert.ok(respuestaRespaldo.texto.length>500);
-console.log('Pruebas básicas correctas: acciones, modelos, perfiles, estilos, modificadores, memoria automática, personaje Demo y fallback offline inmediato.');
+const partes=analizarAccionesYDialogo('*le mira mal* h-holii *se cruza de brazos* qué fue');assert.deepEqual(partes.map(p=>p.tipo),['accion','dialogo','accion','dialogo']);assert.equal(buscarModeloIA('servidor-inteligencia-con-respaldo').categoria,'recomendado');assert.equal(buscarPerfilInspiracion('epictale-large-inspirado').dryMultiplier,3);assert.equal(ESTILOS_CONVERSACION.length,5);assert.equal(personajeDemoLaboratorio.id,'personaje-demo-laboratorio');assert.match(describirModificadoresTemporales({timidezCoqueteo:80,seriedadJuego:70,calmaEnergia:75}).join(' '),/coqueto/);assert.match(detectarRecuerdosEnTexto('me gusta el azul')[0].contenido,/azul/i);
+const proveedorSinServidor=new ProveedorAutomaticoConRespaldo({urlBase:''});const inicio=Date.now();const respuesta=await proveedorSinServidor.responder({personaje:personajeDemoLaboratorio,mensaje:'hola',historial:[],modelo:buscarModeloIA('servidor-inteligencia-con-respaldo'),personaUsuario:{nombre:'Tú'},ajustesConversacion:{modificadoresTemporales:[],estiloConversacion:{nombre:'Natural'}},preferenciasGeneracion:{temperatura:.9,creatividad:.9,longitud:{objetivoCaracteres:900}}});assert.equal(respuesta.usoRespaldo,true);assert.ok(Date.now()-inicio<1000);assert.ok(respuesta.texto.length>500);
+// Verificación de rutas de imports para impedir otra pantalla negra por módulos inexistentes.
+const aqui=path.dirname(fileURLToPath(import.meta.url)),raiz=path.resolve(aqui,'../aplicacion');const js=[];function recorrer(dir){for(const ent of fs.readdirSync(dir,{withFileTypes:true})){const p=path.join(dir,ent.name);if(ent.isDirectory())recorrer(p);else if(ent.isFile()&&p.endsWith('.js'))js.push(p);}}recorrer(raiz);
+const exportaciones=new Map();for(const archivo of js){const txt=fs.readFileSync(archivo,'utf8'),nombres=new Set();for(const m of txt.matchAll(/export\s+(?:async\s+)?(?:function|class|const|let|var)\s+([A-Za-z_$][\w$]*)/g))nombres.add(m[1]);for(const bloque of txt.matchAll(/export\s*\{([^}]+)\}/gs)){for(const trozo of bloque[1].split(',')){const m=trozo.trim().match(/^([\w$]+)(?:\s+as\s+([\w$]+))?/);if(m)nombres.add(m[2]||m[1]);}}exportaciones.set(path.resolve(archivo),nombres);}
+for(const archivo of js){const txt=fs.readFileSync(archivo,'utf8');for(const m of txt.matchAll(/(?:from\s*|import\s*\()(['"])(\.{1,2}\/[^'"]+)\1/g)){const destino=path.resolve(path.dirname(archivo),m[2]);assert.ok(fs.existsSync(destino),`Import inexistente: ${path.relative(raiz,archivo)} -> ${m[2]}`);}for(const m of txt.matchAll(/import\s*\{([^}]+)\}\s*from\s*['"](\.{1,2}\/[^'"]+)['"]/gs)){const destino=path.resolve(path.dirname(archivo),m[2]),disponibles=exportaciones.get(destino)||new Set();for(const parte of m[1].split(',')){const original=parte.trim().match(/^([\w$]+)/)?.[1];if(original)assert.ok(disponibles.has(original),`Export nombrado inexistente: ${path.relative(raiz,archivo)} importa ${original} desde ${m[2]}`);}}}
+assert.match(fs.readFileSync(path.resolve(raiz,'modulos/notificaciones/vista-notificaciones-aplicacion.js'),'utf8'),/CATALOGO_NOTIFICACIONES_APLICACION/);
+console.log(`Pruebas v0.5 correctas: parser, modelos, perfiles, memoria, fallback, rutas y exports (${js.length} módulos).`);

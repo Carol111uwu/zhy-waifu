@@ -1,8 +1,10 @@
 export const CONFIGURACION_GENERAL_APLICACION=Object.freeze({
   nombre:'ZHY Companion',
-  version:'0.4.1',
+  version:'0.5.0',
   personajeInicialId:'personaje-demo-laboratorio',
-  maximoMensajesLocalesPorPersonaje:120,
-  maximoHistorialesArchivadosPorPersonaje:24,
+  maximoMensajesLocalesPorPersonaje:160,
+  maximoHistorialesArchivadosPorPersonaje:32,
+  maximoRamasPorPersonaje:40,
+  maximoAlternativasPorMensaje:8,
   maximoTarjetasMemoriaPorPersonaje:100,
 });

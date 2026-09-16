@@ -1,10 +1,35 @@
 {
-  "personaje": {"id":"personaje-demo-laboratorio","nombre":"Demo","descripcion":"...","recuerdosBase":[]},
-  "personaUsuario": {"nombre":"Tú","descripcion":""},
-  "ajustesConversacion": {"modificadoresTemporales":""},
+  "personaje": {
+    "id": "personaje-demo-laboratorio",
+    "nombre": "Demo",
+    "descripcion": "Personaje temporal de laboratorio",
+    "rasgos": ["curioso", "expresivo"],
+    "recuerdosBase": []
+  },
+  "personaUsuario": {
+    "nombre": "Tú",
+    "apodo": "",
+    "pronombres": "",
+    "descripcion": "",
+    "gustos": "",
+    "limites": ""
+  },
+  "ajustesConversacion": {
+    "modeloId": "servidor-inteligencia-con-respaldo",
+    "modificadoresTemporales": [],
+    "estiloConversacion": {"nombre": "5 Energía"}
+  },
   "mensaje": "Hola",
   "historial": [],
-  "modelo": {"id":"servidor-inteligencia-con-respaldo"},
-  "perfilInspiracion": {"id":"narrativa-equilibrada"},
-  "preferenciasGeneracion": {"temperatura":0.9,"maxTokens":1800}
+  "modelo": {"id": "servidor-inteligencia-con-respaldo"},
+  "perfilInspiracion": {"id": "narrativa-equilibrada"},
+  "preferenciasGeneracion": {
+    "temperatura": 0.9,
+    "topP": 0.95,
+    "topK": 40,
+    "frequencyPenalty": 0,
+    "presencePenalty": 0,
+    "dryMultiplier": 0,
+    "maxTokens": 1800
+  }
 }

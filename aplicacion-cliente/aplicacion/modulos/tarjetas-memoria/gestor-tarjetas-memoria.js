@@ -1,10 +1,8 @@
 import { estadoGlobalAplicacion, actualizarEstadoGlobal } from '../../estado-y-persistencia-aplicacion/estado-global-aplicacion.js';
 import { CONFIGURACION_GENERAL_APLICACION } from '../../configuracion/configuracion-general-aplicacion.js';
-
 export function obtenerTarjetasMemoria(personajeId){return estadoGlobalAplicacion.tarjetasMemoriaPorPersonaje[personajeId]||[];}
-export function agregarTarjetaMemoria(personajeId,{titulo,contenido,categoria='General'}){
-  const tarjeta={id:`tarjeta-${Date.now()}-${Math.random().toString(36).slice(2,7)}`,titulo:titulo.trim()||'Sin título',contenido:contenido.trim(),categoria,creadaEn:new Date().toISOString()};
-  actualizarEstadoGlobal(s=>{const lista=s.tarjetasMemoriaPorPersonaje[personajeId]||=[];lista.unshift(tarjeta);s.tarjetasMemoriaPorPersonaje[personajeId]=lista.slice(0,CONFIGURACION_GENERAL_APLICACION.maximoTarjetasMemoriaPorPersonaje);});return tarjeta;
-}
+export function agregarTarjetaMemoria(personajeId,{titulo,contenido,categoria='General',origen='manual',confianza=1}){const tarjeta={id:`tarjeta-${Date.now()}-${Math.random().toString(36).slice(2,7)}`,titulo:titulo.trim()||'Sin título',contenido:contenido.trim(),categoria,origen,confianza,creadaEn:new Date().toISOString()};actualizarEstadoGlobal(s=>{const lista=s.tarjetasMemoriaPorPersonaje[personajeId]||=[];lista.unshift(tarjeta);s.tarjetasMemoriaPorPersonaje[personajeId]=lista.slice(0,CONFIGURACION_GENERAL_APLICACION.maximoTarjetasMemoriaPorPersonaje);});return tarjeta;}
+export function editarTarjetaMemoria(personajeId,tarjetaId,cambios){actualizarEstadoGlobal(s=>{const t=(s.tarjetasMemoriaPorPersonaje[personajeId]||[]).find(x=>x.id===tarjetaId);if(t)Object.assign(t,cambios,{actualizadaEn:new Date().toISOString()});});}
+export function moverTarjetaMemoria(personajeId,tarjetaId,direccion){actualizarEstadoGlobal(s=>{const lista=s.tarjetasMemoriaPorPersonaje[personajeId]||[],i=lista.findIndex(x=>x.id===tarjetaId),j=i+direccion;if(i<0||j<0||j>=lista.length)return;[lista[i],lista[j]]=[lista[j],lista[i]];});}
 export function eliminarTarjetaMemoria(personajeId,tarjetaId){actualizarEstadoGlobal(s=>{s.tarjetasMemoriaPorPersonaje[personajeId]=(s.tarjetasMemoriaPorPersonaje[personajeId]||[]).filter(t=>t.id!==tarjetaId);});}
-export function obtenerTarjetasComoRecuerdos(personajeId){return obtenerTarjetasMemoria(personajeId).map(t=>`${t.titulo}: ${t.contenido}`);}
+export function obtenerTarjetasComoRecuerdos(personajeId){return obtenerTarjetasMemoria(personajeId).map(t=>`[${t.categoria}] ${t.titulo}: ${t.contenido}`);}

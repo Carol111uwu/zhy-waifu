@@ -15,7 +15,7 @@ async def ciclo_vida(_app):
     yield
 
 cfg=obtener_configuracion_entorno()
-aplicacion=FastAPI(title='ZHY Companion · Servidor de Inteligencia',version='0.4.0',lifespan=ciclo_vida)
+aplicacion=FastAPI(title='ZHY Companion · Servidor de Inteligencia',version='0.5.0',lifespan=ciclo_vida)
 aplicacion.add_middleware(
     CORSMiddleware,
     allow_origins=cfg.lista_origenes_permitidos or ['*'],

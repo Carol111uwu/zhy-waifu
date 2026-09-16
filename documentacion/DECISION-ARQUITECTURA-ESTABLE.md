@@ -1,46 +1,12 @@
-# Decisión de arquitectura estable
+# Decisión de arquitectura estable · v0.5
 
-## Objetivo
-
-Que ZHY Companion siga siendo utilizable aunque falle un modelo, un proveedor o temporalmente el servidor de inteligencia.
-
-## Capas
-
-```text
-Android / PWA / Web
-        │
-        ├── interfaz + chats + memoria local + personaje Demo
-        │
-        └── proveedor automático
-                 │
-          ┌──────┴──────┐
-          ▼             ▼
-      FastAPI        respaldo local
-          │
-       LiteLLM
-          │
-   ┌──────┼────────┐
-   ▼      ▼        ▼
-OpenRouter directos Ollama(dev)
-          │
-      PostgreSQL
-```
-
-## Reglas de estabilidad
-
-- El cliente nunca contiene claves de proveedores.
-- Python no es necesario para abrir la app.
-- URL de backend vacía = fallback local inmediato.
-- Backend no accesible = comprobación corta y fallback local.
-- Modelo A falla = backend intenta el siguiente modelo configurado.
-- Datos persistentes de servidor van a PostgreSQL, no al disco efímero del host.
-- Personalidad y modelos permanecen desacoplados.
-- Mack no está incluida hasta terminar las pruebas con `Demo`.
-
-## Cambiar la URL del backend sin buscar por todo el proyecto
-
-Solo edita:
-
-`aplicacion-cliente/aplicacion/configuracion/configuracion-conexion-servidor.js`
-
-Así Android, PWA y web comparten el mismo valor predeterminado sin acoplar las vistas al hosting.
+1. Un solo proyecto/repo, varias capas independientes.
+2. Cliente vanilla HTML/CSS/JS para máxima portabilidad entre GitHub Pages, PWA, Capacitor, VS Code, Antigravity y editores Android.
+3. Python es backend opcional; nunca requisito para dibujar la interfaz.
+4. LiteLLM desacopla proveedores/modelos del cliente.
+5. Selección de modelo por chat, no como pestaña principal.
+6. Memoria dividida por capas y tarjetas.
+7. Alternativas y ramas preservan versiones de conversación.
+8. Arranque seguro impide que un error de importación se vea como pantalla negra sin explicación.
+9. GitHub Pages es la publicación gratuita principal.
+10. Mack se integra después como personaje independiente y portable.

@@ -1,26 +1,25 @@
-# Configurar IA y servidor
+# Configurar IA y servidor · v0.5
 
-## Arquitectura recomendada
+## La app no depende de Python para abrir
 
-La aplicación se divide deliberadamente en dos procesos independientes:
+`aplicacion-cliente/` funciona como PWA/Android con datos locales. `servidor-inteligencia/` es opcional y contiene FastAPI + LiteLLM para modelos reales.
 
-1. `aplicacion-cliente/`: interfaz, personajes, chats, memoria local, PWA y contenido Android. Sigue abriendo aunque la IA remota no responda.
-2. `servidor-inteligencia/`: FastAPI + LiteLLM + PostgreSQL. Guarda secretos y llama modelos reales.
+Si el backend no está disponible, el modo recomendado `automático con respaldo` entra al motor demostrativo local y mantiene la aplicación utilizable.
 
-Python **no forma parte del arranque del cliente Android/web**. Si el backend está caído, el modo `automático con respaldo` cambia al generador offline de demostración en pocos segundos.
+## Opción elegida para IA
 
-## Opción de modelos elegida
+Usar **LiteLLM en nuestro backend** como capa estable. Permite cambiar el modelo real sin editar el frontend.
 
-Usar **LiteLLM en nuestro backend** como interfaz estable.
+Posibles proveedores detrás del servidor:
 
-Orden recomendado:
+- OpenRouter;
+- Anthropic/Claude;
+- Qwen/DashScope;
+- DeepSeek;
+- MiniMax;
+- Ollama en PC.
 
-1. OpenRouter como acceso principal a varios modelos/proveedores con una sola clave.
-2. Proveedores directos opcionales (Anthropic, DeepSeek, Qwen/DashScope, MiniMax) como fallbacks externos adicionales.
-3. Ollama solo para desarrollo local en PC.
-4. Motor narrativo offline de la app como último respaldo de experiencia, no como LLM real.
-
-El frontend solo conoce familias (`Claude`, `Qwen`, etc.). Los IDs reales se configuran en variables de entorno y pueden cambiarse sin editar la app.
+Las claves se configuran únicamente como variables secretas del servidor.
 
 ## Desarrollo local
 
@@ -28,34 +27,18 @@ El frontend solo conoce familias (`Claude`, `Qwen`, etc.). Los IDs reales se con
 cd servidor-inteligencia
 python -m venv .venv
 # Windows: .venv\\Scripts\\activate
-# Linux/macOS: source .venv/bin/activate
+# Linux/macOS/Termux compatible: source .venv/bin/activate
 pip install -r requirements-dev.txt
 cp .env.example .env
 uvicorn zhy_companion_servidor.iniciar_servidor:aplicacion --app-dir src --reload --port 8000
 ```
 
-Después, en Ajustes de la app, usa `http://127.0.0.1:8000` como URL del servidor.
+## Sin dinero
 
-## Producción
+El frontend puede vivir permanentemente en GitHub Pages. El `render.yaml` de v0.5 es solo una plantilla de backend gratuito opcional. Los planes gratuitos pueden dormir, reiniciarse o cambiar sus límites; por eso **no se considera requisito para que la app abra**.
 
-Para disponibilidad continua no uses un Web Service gratuito que se duerma. `render.yaml` está preparado con:
+Si más adelante existe un servidor estable, basta con configurar su URL en `Mi → Ajustes`.
 
-- cliente estático;
-- Web Service Python `0.5c-512mb`;
-- PostgreSQL `0.1c-256mb`;
-- health check `/salud/preparado`;
-- despliegue automático desde GitHub.
+## Importante
 
-Ningún hosting puede prometer 100 % de uptime. Esta arquitectura reduce el impacto de fallas porque la app cliente es independiente y cuenta con fallback local.
-
-## Variables
-
-Copia `.env.example` a `.env` solo en desarrollo. Nunca subas `.env`.
-
-`MODELOS_LITELLM_PRIORIDAD` es una lista separada por comas, por ejemplo:
-
-```text
-openrouter/<modelo-principal>,openrouter/<modelo-respaldo>,anthropic/<modelo-directo>
-```
-
-Usa IDs vigentes del proveedor en el momento de configurar producción. No se fijan IDs comerciales en el código para evitar romper la app cuando un proveedor renombra o retira un modelo.
+No subir `.env`, tokens ni API keys al repositorio. No poner secretos dentro de JavaScript, PWA ni APK.

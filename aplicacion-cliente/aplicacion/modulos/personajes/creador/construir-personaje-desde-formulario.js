@@ -9,6 +9,8 @@ export function construirPersonajeDesdeFormulario(datos){
     categoria:String(datos.get('categoria')||'General').trim(),
     etiquetas:String(datos.get('etiquetas')||'').split(',').map(v=>v.trim()).filter(Boolean),
     vozPreferida:String(datos.get('vozPreferida')||'dispositivo'),
+    visibilidad:String(datos.get('visibilidad')||'Privado'),
+    musicaPreferidaUrl:String(datos.get('musicaPreferidaUrl')||'').trim(),
     indicacionAdicional:String(datos.get('indicacionAdicional')||'').trim(),
     avatarTexto:nombre.slice(0,1).toUpperCase()||'?',
     avatarImagen:String(datos.get('avatarImagen')||'').trim(),

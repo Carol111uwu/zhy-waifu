@@ -1,11 +1,11 @@
-# Arquitectura en español · ZHY Companion v0.4
-
-El proyecto es **una sola aplicación** con capas reemplazables. Python existe únicamente en el servidor opcional; el cliente web/Android puede abrir aunque el backend esté temporalmente fuera de línea.
+# Arquitectura en español · ZHY Companion v0.5
 
 ```text
 ZHY-COMPANION/
-├── aplicacion-cliente/          # web + PWA + contenido Android
+├── aplicacion-cliente/
+│   ├── index.html
 │   ├── aplicacion/
+│   │   ├── arranque-seguro.js
 │   │   ├── configuracion/
 │   │   ├── estado-y-persistencia-aplicacion/
 │   │   ├── navegacion-aplicacion/
@@ -13,20 +13,23 @@ ZHY-COMPANION/
 │   │   └── modulos/
 │   │       ├── inicio-aplicacion/
 │   │       ├── listado-conversaciones/
+│   │       ├── centro-creacion/
+│   │       ├── perfil-aplicacion/
 │   │       ├── conversacion/
 │   │       ├── personajes/
+│   │       ├── configuracion-conversacion/
 │   │       ├── memoria-automatica/
 │   │       ├── memoria-personaje/
 │   │       ├── tarjetas-memoria/
-│   │       ├── configuracion-conversacion/
 │   │       ├── modelos-ia/
-│   │       ├── musica-conversacion/
 │   │       ├── voz-personaje/
+│   │       ├── musica-conversacion/
 │   │       └── notificaciones/
 │   ├── estilos/
 │   ├── publico/
 │   └── trabajador-servicio.js
-├── servidor-inteligencia/       # FastAPI + LiteLLM + BD
+├── servidor-inteligencia/
+│   └── FastAPI + LiteLLM + persistencia opcional
 ├── contratos-compartidos/
 ├── documentacion/
 ├── .github/workflows/
@@ -34,10 +37,17 @@ ZHY-COMPANION/
 └── render.yaml
 ```
 
-## Regla principal
+## Separación obligatoria
 
-Personaje, memoria, conversación, apariencia, proveedor de IA, servidor y despliegue son módulos diferentes. Quitar uno no debe obligar a reescribir todos los demás.
+- personaje ≠ modelo;
+- memoria ≠ historial;
+- memoria objetiva ≠ interpretación;
+- ajustes temporales ≠ personalidad base;
+- frontend ≠ servidor Python;
+- proveedor IA ≠ interfaz;
+- PWA/Android comparten el mismo cliente;
+- Mack será un perfil nuevo, no una reescritura del motor.
 
-## Mack
+## Resultado
 
-Mack NO está implementada en esta versión. Cuando termine su ficha, se añadirá como perfil propio y podrá reutilizar chat, memoria, voz, modelos y servidor sin modificar sus motores internos.
+El usuario ve una app sencilla de chat. La complejidad vive debajo en módulos con nombres descriptivos y responsabilidades pequeñas.

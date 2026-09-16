@@ -6,6 +6,8 @@ export const personajeDemoLaboratorio = Object.freeze({
   categoria: 'Laboratorio',
   etiquetas: ['pruebas','companion','narrativo'],
   vozPreferida: 'dispositivo',
+  visibilidad: 'Privado',
+  musicaPreferidaUrl: '',
   indicacionAdicional: 'Sirve para probar la aplicación. No intenta imitar ni reemplazar a Mack.',
   avatarTexto: 'D',
   avatarImagen: '',

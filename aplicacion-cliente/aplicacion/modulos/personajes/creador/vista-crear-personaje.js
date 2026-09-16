@@ -21,6 +21,8 @@ export function renderizarVistaCrearPersonaje(){
     campo('Subtítulo / descripción corta',subtitulo),campo('Avatar por URL',avatar,'Opcional. Luego podremos añadir carga real de archivos.'),
     campo('Categoría',e('input',{name:'categoria',placeholder:'Compañía, historia, fantasy...'})),campo('Etiquetas',e('input',{name:'etiquetas',placeholder:'romance, humor, aventura'}),'Separadas por coma.'),
     campo('Voz',e('select',{name:'vozPreferida'},[e('option',{value:'dispositivo',texto:'Voz del dispositivo'}),e('option',{value:'sin-voz',texto:'Sin voz'}),e('option',{value:'servidor',texto:'Voz del servidor · futuro'})])),
+    campo('Visibilidad',e('select',{name:'visibilidad'},[e('option',{value:'Privado',texto:'Privado'}),e('option',{value:'Local',texto:'Solo este dispositivo'})]),'No publicamos personajes a ninguna comunidad.'),
+    campo('Música de fondo predeterminada',e('input',{name:'musicaPreferidaUrl',type:'url',placeholder:'https://... (opcional)'})),
     campo('Rasgos separados por coma',rasgos),
     campo('Saludo inicial',saludo),e('button',{clase:'boton-secundario',type:'button',texto:'✨ Generar saludo de prueba',alclic:()=>{saludo.value=generarCampoPersonajeDemostracion('saludo',{nombre:nombre.value,genero:genero.value,rasgos:rasgos.value});}}),
     campo('Descripción',descripcion),e('button',{clase:'boton-secundario',type:'button',texto:'✨ Generar descripción de prueba',alclic:()=>{descripcion.value=generarCampoPersonajeDemostracion('descripcion',{nombre:nombre.value,genero:genero.value,rasgos:rasgos.value});}}),

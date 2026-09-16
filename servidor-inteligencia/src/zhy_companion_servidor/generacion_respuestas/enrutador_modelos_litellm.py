@@ -33,9 +33,13 @@ async def generar_con_fallback(mensajes, preferencias, selector_modelo: str | No
     from litellm import acompletion
     temperatura=float(preferencias.get('temperatura',0.9)); longitud=preferencias.get('longitud') or {}
     max_tokens=int(preferencias.get('maxTokens',longitud.get('maximoTokens',1800))); errores=[]
+    parametros_comunes={'temperature':temperatura,'max_tokens':max_tokens,'timeout':70}
+    if preferencias.get('topP') is not None: parametros_comunes['top_p']=float(preferencias['topP'])
+    if preferencias.get('frequencyPenalty') is not None: parametros_comunes['frequency_penalty']=float(preferencias['frequencyPenalty'])
+    if preferencias.get('presencePenalty') is not None: parametros_comunes['presence_penalty']=float(preferencias['presencePenalty'])
     for modelo in modelos:
         try:
-            respuesta=await acompletion(model=modelo,messages=mensajes,temperature=temperatura,max_tokens=max_tokens,timeout=70)
+            respuesta=await acompletion(model=modelo,messages=mensajes,**parametros_comunes)
             texto=(respuesta.choices[0].message.content or '').strip()
             if not texto: raise RuntimeError('respuesta vacía')
             return ResultadoModelo(texto=texto,modelo=modelo,proveedor=modelo.split('/',1)[0],errores_previos=errores)

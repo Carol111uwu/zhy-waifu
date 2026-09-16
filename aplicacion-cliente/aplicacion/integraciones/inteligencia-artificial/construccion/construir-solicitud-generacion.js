@@ -30,6 +30,10 @@ export function construirSolicitudGeneracion({personaje,mensaje,historial,prefer
       frecuenciaAccionesNarrativas:Number(configModelo.frecuenciaAccionesNarrativas ?? perfilInspiracion.frecuenciaAcciones ?? preferencias.frecuenciaAccionesNarrativas),
       multiplicadorLongitud:multiplicador,
       dryMultiplier:Number(configModelo.dryMultiplier || perfilInspiracion.dryMultiplier || 0),
+      topP:Number(configModelo.topP ?? 0.95),
+      topK:Number(configModelo.topK ?? 40),
+      frequencyPenalty:Number(configModelo.frequencyPenalty ?? 0),
+      presencePenalty:Number(configModelo.presencePenalty ?? 0),
       longitud,
       maxTokens:longitud.maximoTokens,
       instruccionesFormato:[

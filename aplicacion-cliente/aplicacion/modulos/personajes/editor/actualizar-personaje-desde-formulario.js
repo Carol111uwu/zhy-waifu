@@ -6,6 +6,8 @@ export function construirCambiosPersonaje(formData){
     categoria:String(formData.get('categoria')||'General').trim(),
     etiquetas:String(formData.get('etiquetas')||'').split(',').map(x=>x.trim()).filter(Boolean),
     vozPreferida:String(formData.get('vozPreferida')||'dispositivo'),
+    visibilidad:String(formData.get('visibilidad')||'Privado'),
+    musicaPreferidaUrl:String(formData.get('musicaPreferidaUrl')||'').trim(),
     indicacionAdicional:String(formData.get('indicacionAdicional')||'').trim(),
     subtitulo:String(formData.get('subtitulo')||'').trim(),
     descripcion:String(formData.get('descripcion')||'').trim(),

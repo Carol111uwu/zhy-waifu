@@ -3,17 +3,19 @@ import { estadoGlobalAplicacion, actualizarEstadoGlobal } from '../../estado-y-p
 import { irASeccion } from '../../navegacion-aplicacion/navegacion-entre-secciones.js';
 import { obtenerPersonajesDisponibles } from '../personajes/registro-personajes-disponibles.js';
 import { obtenerConversacion } from '../conversacion/controlador-conversacion-personaje.js';
-
-function avatar(p){return p.avatarImagen?e('img',{clase:'avatar-personaje avatar-imagen avatar-grande',src:p.avatarImagen,alt:''}):e('div',{clase:'avatar-personaje avatar-grande',texto:p.avatarTexto||p.nombre[0]});}
-function resumenUltimoMensaje(p){const l=obtenerConversacion(p.id);return l.length?l[l.length-1].texto.replace(/\*/g,'').slice(0,100):p.subtitulo||'Sin conversación todavía';}
+function avatar(p){return p.avatarImagen?e('img',{clase:'avatar-personaje avatar-imagen avatar-biblioteca',src:p.avatarImagen,alt:''}):e('div',{clase:'avatar-personaje avatar-biblioteca',texto:p.avatarTexto||p.nombre[0]});}
+function abrir(p){actualizarEstadoGlobal(s=>{s.personajeActivoId=p.id;s.seccionActual='detallesPersonaje';});}
+function ultimo(p){const l=obtenerConversacion(p.id),m=l.at(-1);return(m?.texto||p.saludoInicial||'').replace(/\*/g,' ').replace(/\s+/g,' ').trim().slice(0,78);}
+function tarjeta(p){const fav=estadoGlobalAplicacion.favoritosPersonajes.includes(p.id);return e('article',{clase:'tarjeta-biblioteca-personaje'},[e('button',{clase:'zona-principal-tarjeta-biblioteca',type:'button',alclic:()=>abrir(p)},[avatar(p),e('div',{clase:'texto-tarjeta-biblioteca'},[e('strong',{texto:p.nombre}),e('span',{texto:p.subtitulo||'Personaje'}),e('small',{texto:ultimo(p)})])]),e('button',{clase:`boton-favorito ${fav?'activo':''}`,type:'button',texto:fav?'★':'☆',alclic:()=>actualizarEstadoGlobal(s=>{s.favoritosPersonajes=fav?s.favoritosPersonajes.filter(id=>id!==p.id):[...s.favoritosPersonajes,p.id];})})]);}
 export function renderizarVistaInicioAplicacion(){
-  const personajes=obtenerPersonajesDisponibles();
-  const tarjetas=personajes.map(p=>e('button',{clase:'tarjeta-personaje tarjeta-inicio-personaje',type:'button',alclic:()=>actualizarEstadoGlobal(s=>{s.personajeActivoId=p.id;s.seccionActual='conversacion';})},[avatar(p),e('div',{clase:'texto-tarjeta-personaje'},[e('strong',{texto:p.nombre}),e('span',{texto:p.subtitulo||''}),e('small',{texto:resumenUltimoMensaje(p)})]) ]));
-  return e('section',{clase:'pagina-desplazable'},[
-    e('div',{clase:'encabezado-pagina'},[e('div',{},[e('h1',{texto:'ZHY Companion'}),e('p',{texto:'Laboratorio de personajes y conversaciones. Demo es el personaje de prueba; Mack se añadirá después como perfil independiente.'})]),e('button',{clase:'boton-icono',type:'button',texto:'✉',alclic:()=>irASeccion('notificaciones')})]),
-    e('div',{clase:'tarjeta-estado-proyecto'},[e('strong',{texto:'Modo seguro para pruebas'}),e('p',{texto:'Si el servidor de IA falla, el chat puede continuar con el motor offline de demostración. Tus claves de IA nunca se guardan en el frontend.'}),e('button',{clase:'boton-secundario',type:'button',texto:'Ver configuración de IA',alclic:()=>irASeccion('ajustes')})]),
-    e('div',{clase:'cabecera-seccion-inicio'},[e('h2',{texto:'Mis personajes'}),e('button',{clase:'boton-principal',type:'button',texto:'+ Crear',alclic:()=>irASeccion('crearPersonaje')})]),
-    e('div',{clase:'cuadricula-personajes'},tarjetas),
-    e('div',{clase:'cabecera-seccion-inicio'},[e('h2',{texto:'Conversaciones'}),e('button',{clase:'boton-secundario',type:'button',texto:'Ver todos',alclic:()=>irASeccion('listaConversaciones')})]),
-  ]);
+ const todos=obtenerPersonajesDisponibles(),q=(estadoGlobalAplicacion.busquedaPersonajes||'').toLowerCase(),favoritos=estadoGlobalAplicacion.pestanaInicio==='favoritos';
+ const filtrados=todos.filter(p=>(!favoritos||estadoGlobalAplicacion.favoritosPersonajes.includes(p.id))&&(!q||`${p.nombre} ${p.subtitulo||''} ${(p.etiquetas||[]).join(' ')}`.toLowerCase().includes(q)));
+ const buscar=e('input',{class:'entrada-busqueda',placeholder:'Buscar personajes...','aria-label':'Buscar personajes',value:estadoGlobalAplicacion.busquedaPersonajes||''});buscar.addEventListener('input',()=>actualizarEstadoGlobal(s=>{s.busquedaPersonajes=buscar.value;}));
+ return e('section',{clase:'pagina-desplazable pagina-app-movil'},[
+  e('header',{clase:'cabecera-app-principal'},[e('div',{},[e('small',{texto:'ZHY'}),e('h1',{texto:'Companion'})]),e('button',{clase:'boton-icono-limpio',type:'button',texto:'🔔',alclic:()=>irASeccion('notificaciones')})]),
+  buscar,
+  e('div',{clase:'pestanas-lineales'},[e('button',{clase:!favoritos?'activa':'',texto:'Mis personajes',alclic:()=>actualizarEstadoGlobal(s=>{s.pestanaInicio='personajes';})}),e('button',{clase:favoritos?'activa':'',texto:'Favoritos',alclic:()=>actualizarEstadoGlobal(s=>{s.pestanaInicio='favoritos';})})]),
+  e('div',{clase:'encabezado-lista-compacto'},[e('strong',{texto:favoritos?'Favoritos':'Biblioteca'}),e('button',{type:'button',texto:'+ Crear',alclic:()=>irASeccion('crearPersonaje')})]),
+  e('div',{clase:'lista-biblioteca-personajes'},filtrados.length?filtrados.map(tarjeta):[e('div',{clase:'estado-vacio-grande'},[e('span',{texto:'◌'}),e('strong',{texto:'No hay personajes aquí'}),e('p',{texto:favoritos?'Marca un personaje con ★ para verlo aquí.':'Crea tu primer personaje para empezar.'})])]),
+ ]);
 }

@@ -1,19 +1,35 @@
-# ZHY Companion v0.4.1
+# ZHY Companion v0.5.0
 
-Aplicación independiente de compañía conversacional. **Mack todavía no está incluida**: `Demo` es el personaje descartable para probar la app antes de importar una personalidad premium.
+Aplicación independiente de personajes y conversación con IA, pensada primero como **app de chat** y no como panel técnico. La experiencia fue reconstruida después de analizar los flujos útiles de una app de referencia, sin copiar sus recursos, código ni servicios internos.
 
-## Qué contiene
+**Mack todavía no está incluida.** `Demo` sigue siendo el personaje de laboratorio para validar la aplicación antes de importar una personalidad compleja.
 
-- Cliente HTML/CSS/JavaScript vanilla, responsive y PWA.
-- Configuración para convertir el mismo cliente en Android con Capacitor 8.
-- Personajes, biblioteca, chats, historial, memoria automática local y tarjetas de memoria.
-- Acciones narrativas `*acción*` separadas visualmente del diálogo.
-- Modelos seleccionables por familia, temperatura, longitud, frecuencia de acciones y perfiles inspirados en estilos vistos en HiWaifu (sin afirmar acceso a sus modelos internos).
-- Backend Python FastAPI independiente.
-- LiteLLM para cambiar/fallback entre proveedores sin reescribir la app.
-- PostgreSQL para persistencia del servidor.
-- Fallback narrativo local para que la app siga utilizable si backend/modelos no responden.
-- GitHub Actions, Render Blueprint y documentación de despliegue.
+## Qué cambió en v0.5
+
+- Inicio convertido en biblioteca de personajes con búsqueda y favoritos.
+- Lista de chats estilo mensajería, borradores, fechas, orden y pestaña de grupos preparada.
+- Navegación principal: `Inicio · Chats · Crear · Personajes · Mi`.
+- Modelos movidos fuera de la navegación principal: ahora se seleccionan **por conversación**.
+- `Personaje ≠ modelo`: cambiar el modelo conserva identidad, memoria e historial.
+- Chat con opciones por mensaje: copiar, editar, otra respuesta, rebobinar, guardar en memoria y eliminar.
+- Respuestas alternativas conservadas y navegables sin destruir inmediatamente la anterior.
+- Ramas al rebobinar para no perder el tramo eliminado.
+- Caja de memoria dividida en `Caja · Yo · Personaje`.
+- Tarjetas de memoria editables, ordenables y eliminables.
+- Persona del usuario ampliada: nombre, apodo, pronombres, identidad, biografía, gustos y límites.
+- Configuración por chat: modelo, estilo, persona, nombre, fondo, burbujas, historial, ramas, memoria, modificadores temporales, música e imagen.
+- Parámetros avanzados dinámicos según modelo: temperatura, DRY, Top P, Top K, penalización de frecuencia, longitud y acciones cuando correspondan.
+- Pantalla de error de arranque: si un módulo falla, la app ya no debe quedarse simplemente negra.
+- PWA y caché actualizados a v0.5.
+- Backend Python sigue aislado; la app web/Android abre aunque el servidor no responda.
+
+## Arquitectura sin costo obligatorio
+
+- **Frontend/PWA:** GitHub Pages.
+- **Android:** mismo cliente con Capacitor.
+- **IA remota:** backend FastAPI opcional.
+- **Sin servidor:** la app conserva interfaz, personajes, chats y memoria local, y puede usar el motor demostrativo.
+- `render.yaml` queda como ejemplo de backend gratuito opcional; los servicios gratuitos pueden dormir y no se consideran disponibilidad 24/7 garantizada.
 
 ## Ejecutar cliente
 
@@ -40,4 +56,4 @@ npm run android:sincronizar
 npm run android:abrir
 ```
 
-Consulta `documentacion/` antes de desplegar.
+Lee `documentacion/DOCUMENTO-MAESTRO-v0.5.md` para el estado funcional y las decisiones actuales.

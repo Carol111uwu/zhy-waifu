@@ -1,49 +1,35 @@
-# GitHub y despliegue
+# GitHub y despliegue · v0.5
 
-## Un solo repositorio
+## Repositorio oficial
 
-Guardar todo ZHY Companion en un repositorio privado o público:
+`https://github.com/Carol111uwu/zhy-waifu`
+
+GitHub conserva código, historial y Actions. No subir `.env`, claves de proveedores ni tokens.
+
+## Frontend sin costo
+
+GitHub Pages publica `aplicacion-cliente/` mediante `.github/workflows/publicar-github-pages.yml`. La URL actual prevista es:
 
 ```text
-ZHY-COMPANION/
-├── aplicacion-cliente/
-├── servidor-inteligencia/
-├── contratos-compartidos/
-├── documentacion/
-├── .github/workflows/
-├── capacitor.config.json
-└── render.yaml
+https://carol111uwu.github.io/zhy-waifu/
 ```
 
-GitHub conserva código, ramas, historial y CI. **No guardar API keys ni `.env`.**
+Este sitio contiene la PWA y sigue abriendo aunque el backend Python no esté disponible.
 
-## Hosting recomendado
+## Backend opcional
 
-### Producción principal: Render
+`render.yaml` describe un Web Service Python gratuito opcional. Un servicio gratuito puede dormirse o cambiar sus límites. Por eso el cliente no depende de él para arrancar y tiene respaldo local.
 
-Conectar el repositorio a Render y crear un Blueprint usando `render.yaml`.
+## Flujo seguro
 
-- `zhy-companion-web`: sitio estático.
-- `zhy-companion-api`: FastAPI siempre activo con plan de pago.
-- `zhy-companion-db`: PostgreSQL administrado.
-
-Render puede desplegar cada cambio de Git y usa health checks para evitar enviar tráfico a una versión que no arrancó correctamente.
-
-### GitHub Pages: opcional
-
-El workflow `publicar-github-pages.yml` publica **solo `aplicacion-cliente/`**. Es útil para demo/PWA estática, pero Pages no ejecuta Python. El backend continúa desplegado por separado.
-
-## Flujo de cambios seguro
-
-1. Crear rama.
-2. Modificar un módulo.
-3. GitHub Actions ejecuta pruebas JS y Python.
-4. Fusionar a `main` solo si pasan.
-5. Render reconstruye y despliega.
-6. El health check decide cuándo la nueva API está lista.
-
-Si un deploy del backend falla, la versión anterior puede seguir atendiendo mientras se corrige el commit.
+1. editar un módulo;
+2. ejecutar pruebas;
+3. commit;
+4. push a `main`;
+5. GitHub Actions verifica cliente y servidor;
+6. Pages publica el cliente;
+7. si una publicación falla, la versión previa sigue siendo el punto de referencia en Git.
 
 ## CORS
 
-El Blueprint inicial usa `ORIGENES_PERMITIDOS=*` para que la primera publicación web/Android no falle por desconocer todavía la URL final del frontend. Como no usamos cookies de autenticación (`allow_credentials=False`), esto facilita el primer despliegue. Cuando conozcas el dominio definitivo, puedes reemplazar `*` por el origen exacto desde Render.
+El ejemplo de backend permite el origen de GitHub Pages. Para Android nativo u otros dominios se agregan explícitamente los orígenes necesarios en el servidor.

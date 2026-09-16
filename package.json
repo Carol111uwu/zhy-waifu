@@ -1,6 +1,6 @@
 {
   "name": "zhy-companion",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "private": true,
   "scripts": {
     "servir:web": "python -m http.server 8080 -d aplicacion-cliente",
