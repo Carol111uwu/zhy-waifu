@@ -1,0 +1,10 @@
+{
+  "personaje": {"id":"personaje-demo-laboratorio","nombre":"Demo","descripcion":"...","recuerdosBase":[]},
+  "personaUsuario": {"nombre":"Tú","descripcion":""},
+  "ajustesConversacion": {"modificadoresTemporales":""},
+  "mensaje": "Hola",
+  "historial": [],
+  "modelo": {"id":"servidor-inteligencia-con-respaldo"},
+  "perfilInspiracion": {"id":"narrativa-equilibrada"},
+  "preferenciasGeneracion": {"temperatura":0.9,"maxTokens":1800}
+}

@@ -1,0 +1,20 @@
+{
+  "name": "zhy-companion",
+  "version": "0.4.1",
+  "private": true,
+  "scripts": {
+    "servir:web": "python -m http.server 8080 -d aplicacion-cliente",
+    "probar:web": "node ./aplicacion-cliente/pruebas/ejecutar-pruebas-basicas.mjs",
+    "android:agregar": "npx cap add android",
+    "android:sincronizar": "npx cap sync android",
+    "android:abrir": "npx cap open android"
+  },
+  "dependencies": {
+    "@capacitor/core": "8.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/android": "8.0.0",
+    "@capacitor/cli": "8.0.0"
+  },
+  "type": "module"
+}

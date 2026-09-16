@@ -1,0 +1,16 @@
+{
+  "name": "ZHY Companion",
+  "short_name": "ZHY",
+  "id": "zhy-companion",
+  "start_url": "../",
+  "scope": "../",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0f1722",
+  "theme_color": "#0f1722",
+  "description": "Aplicación independiente de personajes, memoria y conversación con IA.",
+  "icons": [
+    {"src":"./iconos/zhy-companion-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
+    {"src":"./iconos/zhy-companion-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
+  ]
+}

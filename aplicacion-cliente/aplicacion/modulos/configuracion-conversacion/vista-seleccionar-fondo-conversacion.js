@@ -1,0 +1,5 @@
+import { crearElementoHtml as e } from '../../interfaz/crear-elemento-html.js';
+import { estadoGlobalAplicacion, obtenerAjustesConversacion, actualizarAjustesConversacion } from '../../estado-y-persistencia-aplicacion/estado-global-aplicacion.js';
+import { irASeccion } from '../../navegacion-aplicacion/navegacion-entre-secciones.js';
+import { FONDOS_CONVERSACION } from './catalogo-apariencia-conversacion.js';
+export function renderizarVistaSeleccionarFondoConversacion(){const id=estadoGlobalAplicacion.personajeActivoId;const actual=obtenerAjustesConversacion(id).fondoConversacionId;return e('section',{clase:'pagina-desplazable pagina-angosta'},[e('div',{clase:'encabezado-pagina'},[e('button',{clase:'boton-icono',type:'button',texto:'←',alclic:()=>irASeccion('configuracionConversacion')}),e('h1',{texto:'Fondo'})]),e('div',{clase:'cuadricula-fondos'},FONDOS_CONVERSACION.map(x=>e('button',{clase:`muestra-fondo ${x.clase} ${x.id===actual?'seleccionada':''}`,type:'button',texto:x.nombre,alclic:()=>actualizarAjustesConversacion(id,{fondoConversacionId:x.id})}))) ]);}

@@ -1,0 +1,26 @@
+import assert from 'node:assert/strict';
+import { analizarAccionesYDialogo } from '../aplicacion/modulos/conversacion/analizar-acciones-y-dialogo.js';
+import { buscarModeloIA } from '../aplicacion/configuracion/catalogo-modelos-inteligencia-artificial.js';
+import { buscarPerfilInspiracion } from '../aplicacion/configuracion/catalogo-perfiles-inspiracion-hiwaifu.js';
+import { ESTILOS_CONVERSACION } from '../aplicacion/modulos/configuracion-conversacion/catalogo-estilos-conversacion.js';
+import { personajeDemoLaboratorio } from '../aplicacion/modulos/personajes/perfiles/personaje-demo-laboratorio.js';
+import { describirModificadoresTemporales } from '../aplicacion/modulos/personajes/modificadores/descripcion-modificadores-temporales.js';
+import { detectarRecuerdosEnTexto } from '../aplicacion/modulos/memoria-automatica/detectar-recuerdos-en-texto.js';
+import { ProveedorAutomaticoConRespaldo } from '../aplicacion/integraciones/inteligencia-artificial/proveedores/proveedor-automatico-con-respaldo.js';
+
+const partes=analizarAccionesYDialogo('*le mira mal* h-holii *se cruza de brazos* qué fue');
+assert.deepEqual(partes.map(p=>p.tipo),['accion','dialogo','accion','dialogo']);
+assert.equal(buscarModeloIA('servidor-inteligencia-con-respaldo').categoria,'recomendado');
+assert.equal(buscarPerfilInspiracion('epictale-large-inspirado').dryMultiplier,3);
+assert.equal(ESTILOS_CONVERSACION.length,5);
+assert.equal(ESTILOS_CONVERSACION.at(-1).nombre,'5 Energía');
+assert.equal(personajeDemoLaboratorio.id,'personaje-demo-laboratorio');
+assert.match(describirModificadoresTemporales({timidezCoqueteo:80,seriedadJuego:70,calmaEnergia:75}).join(' '),/coqueto/);
+assert.match(detectarRecuerdosEnTexto('me gusta el azul')[0].contenido,/azul/i);
+const proveedorSinServidor=new ProveedorAutomaticoConRespaldo({urlBase:''});
+const inicio=Date.now();
+const respuestaRespaldo=await proveedorSinServidor.responder({personaje:personajeDemoLaboratorio,mensaje:'hola',historial:[],modelo:buscarModeloIA('servidor-inteligencia-con-respaldo'),personaUsuario:{nombre:'Tú'},ajustesConversacion:{modificadoresTemporales:[],estiloConversacion:{nombre:'Natural'}},preferenciasGeneracion:{temperatura:0.9,creatividad:0.9,longitud:{objetivoCaracteres:900}}});
+assert.equal(respuestaRespaldo.usoRespaldo,true);
+assert.ok(Date.now()-inicio<1000,'El respaldo sin URL debe activarse inmediatamente');
+assert.ok(respuestaRespaldo.texto.length>500);
+console.log('Pruebas básicas correctas: acciones, modelos, perfiles, estilos, modificadores, memoria automática, personaje Demo y fallback offline inmediato.');

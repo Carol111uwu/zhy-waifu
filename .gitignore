@@ -1,0 +1,30 @@
+# Secretos y entornos
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.sqlite
+*.sqlite3
+*.db
+servidor-inteligencia/datos-locales/
+
+# Node / Capacitor
+node_modules/
+android/.gradle/
+android/local.properties
+
+# Editores/SO
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Temporales
+*.log
+*.tmp

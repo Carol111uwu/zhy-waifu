@@ -1,0 +1,6 @@
+{
+  "appId": "com.zhy.companion",
+  "appName": "ZHY Companion",
+  "webDir": "aplicacion-cliente",
+  "server": {"androidScheme": "https"}
+}

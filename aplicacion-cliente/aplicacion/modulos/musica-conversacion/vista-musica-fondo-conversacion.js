@@ -1,0 +1,9 @@
+import { crearElementoHtml as e } from '../../interfaz/crear-elemento-html.js';
+import { estadoGlobalAplicacion, obtenerAjustesConversacion, actualizarAjustesConversacion } from '../../estado-y-persistencia-aplicacion/estado-global-aplicacion.js';
+import { irASeccion } from '../../navegacion-aplicacion/navegacion-entre-secciones.js';
+export function renderizarVistaMusicaFondoConversacion(){
+ const id=estadoGlobalAplicacion.personajeActivoId;const a=obtenerAjustesConversacion(id);const url=e('input',{type:'url',value:a.musicaFondoUrl||'',placeholder:'https://.../audio.mp3'});const vol=e('input',{type:'range',min:'0',max:'1',step:'0.05',value:a.volumenMusicaFondo});const valor=e('strong',{texto:`${Math.round(a.volumenMusicaFondo*100)}%`});vol.addEventListener('input',()=>valor.textContent=`${Math.round(Number(vol.value)*100)}%`);
+ const audio=e('audio',{controls:'controls',preload:'none'});if(a.musicaFondoUrl)audio.src=a.musicaFondoUrl;
+ const guardar=()=>{actualizarAjustesConversacion(id,{musicaFondoUrl:url.value.trim(),volumenMusicaFondo:Number(vol.value),musicaFondoActiva:Boolean(url.value.trim())});irASeccion('configuracionConversacion');};
+ return e('section',{clase:'pagina-desplazable pagina-angosta'},[e('div',{clase:'encabezado-pagina'},[e('button',{clase:'boton-icono',type:'button',texto:'←',alclic:()=>irASeccion('configuracionConversacion')}),e('div',{class:'titulo-flexible'},[e('h1',{texto:'Música de fondo'}),e('p',{texto:'La reproducción necesita una URL directa y puede requerir tocar Play por políticas del navegador.'})])]),e('label',{clase:'campo-formulario'},[e('span',{texto:'URL de audio'}),url]),e('label',{clase:'campo-formulario'},[e('div',{clase:'titulo-rango'},[e('span',{texto:'Volumen'}),valor]),vol]),audio,e('button',{clase:'boton-principal ancho-completo',type:'button',texto:'Guardar música',alclic:guardar})]);
+}

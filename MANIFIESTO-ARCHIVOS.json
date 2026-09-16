@@ -1,0 +1,667 @@
+{
+  "proyecto": "ZHY Companion",
+  "version": "0.4.1",
+  "cantidadArchivos": 133,
+  "archivos": [
+    {
+      "ruta": ".editorconfig",
+      "bytes": 137,
+      "sha256": "05f9463d683e5957ca2f7cad77a5fec2986298b1ea3c6ca314174805fa1aff44"
+    },
+    {
+      "ruta": ".github/workflows/publicar-github-pages.yml",
+      "bytes": 724,
+      "sha256": "46c93482d2c5282a2de6341fdaaafde90132f31bc33cc68c5fb489bcbe37bc80"
+    },
+    {
+      "ruta": ".github/workflows/verificar-proyecto.yml",
+      "bytes": 849,
+      "sha256": "6718f5a1799995a38d5fc6692ee218f8a09279e3c7777748f7dacf07a346de5a"
+    },
+    {
+      "ruta": ".gitignore",
+      "bytes": 323,
+      "sha256": "78a98778cf932b182b93b0ba4a25d0c1e55fa81df045833699ac9a254146b1db"
+    },
+    {
+      "ruta": "README.md",
+      "bytes": 1372,
+      "sha256": "49ed17454357cae18835af622d2b83ab214c0b55f45dc9e5e4e806e8230d84e5"
+    },
+    {
+      "ruta": "aplicacion-cliente/.editorconfig",
+      "bytes": 114,
+      "sha256": "78dc11bb60364cbb65afecce40c965fa2e395491632a96a5be330a37fe8daad8"
+    },
+    {
+      "ruta": "aplicacion-cliente/.gitignore",
+      "bytes": 34,
+      "sha256": "a9bd9f51d7f89eaafcc26b13b716ee5bec436e7b90237fd8f968e670311d18ed"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/configuracion/catalogo-modelos-inteligencia-artificial.js",
+      "bytes": 4482,
+      "sha256": "8294932c40853f846ad667aafbc924bdf73e1d89eb0a348c5b3ad1ca6c6d26ab"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/configuracion/catalogo-perfiles-inspiracion-hiwaifu.js",
+      "bytes": 1727,
+      "sha256": "58f357243d3ad51b3e5ff7dd2115956eb5b0d84563d635b2e46fcaf4d39cad71"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/configuracion/configuracion-conexion-servidor.js",
+      "bytes": 359,
+      "sha256": "e7738d99dcca07d991e50e8823ea177ca48e0fa01213af5c651666dfec2312cc"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/configuracion/configuracion-general-aplicacion.js",
+      "bytes": 290,
+      "sha256": "4eb7399e3321c323498f3fcd5cd361fc113bb7ee3365968f9029e725792d30b9"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/configuracion/perfiles-longitud-respuesta.js",
+      "bytes": 645,
+      "sha256": "aec4424efd0f8b7145d31f7698b5e43b05fcf2eeed857bffa97c4ccfa6aec567"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/estado-y-persistencia-aplicacion/almacenamiento-local-aplicacion.js",
+      "bytes": 564,
+      "sha256": "8529661326082bdc4e7400b82a99e9b51ac9513bfe5069d9cdfb439c180790bc"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/estado-y-persistencia-aplicacion/estado-global-aplicacion.js",
+      "bytes": 4069,
+      "sha256": "9abb8733f3f9798d373ee384499bf755415a97763980447ee274935f3e1e5d4b"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/estado-y-persistencia-aplicacion/generar-identificador-seguro.js",
+      "bytes": 264,
+      "sha256": "b0da7b776ae2614362c7d24fc5700a490523496f14e18a90bda62388be895a92"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/iniciar-zhy-companion.js",
+      "bytes": 5501,
+      "sha256": "78d0379f6b887fc1d720cae399cbb6897b731a3f777ee80b7b87492e42cad204"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/integraciones/inteligencia-artificial/construccion/construir-solicitud-generacion.js",
+      "bytes": 3858,
+      "sha256": "2b0e5f39c5d0ba8ac0562fa87d040ddf3e3eed68a943229d9d0f9c907619083c"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/integraciones/inteligencia-artificial/coordinador-generacion-personajes.js",
+      "bytes": 906,
+      "sha256": "238ec1979e6d458f0d9cab681eec269e113901d1986eb3908938d009342f3dbb"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/integraciones/inteligencia-artificial/proveedores/contrato-proveedor-inteligencia-artificial.js",
+      "bytes": 153,
+      "sha256": "2d8fc1faf21ba68c9aa79b99836f0f726bf7b1ba1800002c9fa7400abfe6f690"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/integraciones/inteligencia-artificial/proveedores/proveedor-automatico-con-respaldo.js",
+      "bytes": 1217,
+      "sha256": "ead1e1f6c6fe333cb9ef961f984212f06ecd34c6736b285bf8671dc54ec7af71"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/integraciones/inteligencia-artificial/proveedores/proveedor-demostracion-respuestas-extensas.js",
+      "bytes": 6558,
+      "sha256": "bb0eb8932b80d184096bf53bb610a65959cb3d1c70fd91cf2d8d8f5f3a6c991e"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/integraciones/inteligencia-artificial/proveedores/proveedor-servidor-inteligencia.js",
+      "bytes": 2769,
+      "sha256": "5dce6f24e5d287e3c6804759d62b562fc2e34a0dd1d7df42605e2dc85a3102ec"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/integraciones/inteligencia-artificial/seleccion/resolver-proveedor-segun-ajustes.js",
+      "bytes": 894,
+      "sha256": "b6cfdee5d2aaf58242de3f6be090a7292c8bb5e0744087e9cae41cbb1fd3c713"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/interfaz/crear-elemento-html.js",
+      "bytes": 962,
+      "sha256": "48b51b5b8c8b1a3aa1b5cfb53a8d24ec03cd05511b4ddd2ad2ba4d65115c2c2a"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/interfaz/formatear-hora-mensaje.js",
+      "bytes": 149,
+      "sha256": "a73f69c4d3e291a398fed732f3d185973d898db2dddfb7a7d435f0814fee5350"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/modulos/ajustes/vista-ajustes-generales.js",
+      "bytes": 5953,
+      "sha256": "679e7c5ace2721c2fc725ba34bdb7c2e6c7d4538d4cd5aeabbb0b7a09922c996"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/modulos/configuracion-conversacion/catalogo-apariencia-conversacion.js",
+      "bytes": 588,
+      "sha256": "0cf61ba91297d2caf74d15d5239f9b78c6577a1870d1835a7dcf7817d08a4168"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/modulos/configuracion-conversacion/catalogo-estilos-conversacion.js",
+      "bytes": 1061,
+      "sha256": "63d5c4d4231a08bb94bf1358af92661b50433d6e4c1665a1040e9528b0139da6"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/modulos/configuracion-conversacion/vista-configuracion-conversacion.js",
+      "bytes": 5306,
+      "sha256": "31729a899509481927a746a41a0a7270b4c00fd412d9570140d0528f2e7526dd"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/modulos/configuracion-conversacion/vista-editar-nombre-chat.js",
+      "bytes": 1118,
+      "sha256": "d29393afdd9a0995f647e8ad9ab3213e59c5bb29d4db56fee0636757040fa719"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/modulos/configuracion-conversacion/vista-editar-persona-usuario.js",
+      "bytes": 1652,
+      "sha256": "9164d9f6cde346eb416b6b93db7b3d5e2deb6b7b9256b17caf97067176afa062"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/modulos/configuracion-conversacion/vista-seleccionar-burbuja-conversacion.js",
+      "bytes": 1184,
+      "sha256": "1dbd3d8b50b8a7ea0f659f3653cbe09173b0cbd6ac9ead68a5442d43c18a1fc9"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/modulos/configuracion-conversacion/vista-seleccionar-estilo-conversacion.js",
+      "bytes": 1494,
+      "sha256": "4b0bcb2e2b8cd447108e52119f55174c006a6f67fb33f9adb51c36eba12f7faa"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/modulos/configuracion-conversacion/vista-seleccionar-fondo-conversacion.js",
+      "bytes": 1080,
+      "sha256": "dd209cf84cec178b817359020afad2490a8c43aa299944158461873b353b827a"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/modulos/conversacion/analizar-acciones-y-dialogo.js",
+      "bytes": 628,
+      "sha256": "1469a521520960b59575c8ad093451f70e07fb933ab1c26318c666648a9ce91e"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/modulos/conversacion/controlador-conversacion-personaje.js",
+      "bytes": 3953,
+      "sha256": "e9025858f07a6c9ac09e23ff174ffa0cb85649ddfccc6ac23e1399779254a99b"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/modulos/conversacion/crear-mensaje-conversacion.js",
+      "bytes": 346,
+      "sha256": "b6dae500bafefa6e83aa57b56e08c5a438d6d6b0d637fb087a1ae5b84dc06c7e"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/modulos/conversacion/vista-conversacion-personaje.js",
+      "bytes": 5027,
+      "sha256": "9f43719899cda47b10fe81efeb8ae1da037fe8569e43597d4d2e18c382b24bcd"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/modulos/conversacion/vista-historial-conversaciones.js",
+      "bytes": 1865,
+      "sha256": "47b68fad470040156d358bcee26715aef919e206a82ba128e668b2cb575d781a"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/modulos/inicio-aplicacion/vista-inicio-aplicacion.js",
+      "bytes": 2581,
+      "sha256": "7ff4540a46c4f999c89220aaeb3f3319498f5b559c36c2fe770b84a7fbbd795f"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/modulos/listado-conversaciones/vista-listado-conversaciones.js",
+      "bytes": 3037,
+      "sha256": "84b6fd9bb4f3645fc5fbf065e434d9690716128390ee18dcf1a88095ca086107"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/modulos/memoria-automatica/detectar-recuerdos-en-texto.js",
+      "bytes": 983,
+      "sha256": "35d06d2eb2930832e1acf854080ecf85f76f93ef4ae0b53dd132e7b41c396d3a"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/modulos/memoria-automatica/registrar-recuerdos-automaticos.js",
+      "bytes": 830,
+      "sha256": "0168ff12ff959b1f15e653a93de001c401a3ac4007385cdd9500b195021c5adc"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/modulos/memoria-personaje/gestor-memoria-editable-personaje.js",
+      "bytes": 1417,
+      "sha256": "93d6cce3d37a7e95f4686ff38d28f19a1979ca3bbcb49dee9258e189be7d21b9"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/modulos/memoria-personaje/vista-caja-memoria-personaje.js",
+      "bytes": 4147,
+      "sha256": "5fcf4c7beafd038f2a93029f484e115fd4130120ec4b54dd3fb2b7a494172b3e"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/modulos/modelos-ia/configuracion-avanzada/valores-predeterminados-modelo.js",
+      "bytes": 410,
+      "sha256": "1ac1ceafd2e4be05b984d278dae17df1e1d94dfc4dfb7ddeafdd86195bde114e"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/modulos/modelos-ia/configuracion-avanzada/vista-configuracion-avanzada-modelo.js",
+      "bytes": 4676,
+      "sha256": "cc0ddbbe2b2c05f1a0deee0eb854cbad709be34ae057d88154692f05d2c73a8b"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/modulos/modelos-ia/vista-modelos-inteligencia-artificial.js",
+      "bytes": 2922,
+      "sha256": "aaf23b1311cff967fa97f18cb619652d3c1f6c77544fbb228037c18dfaf673a3"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/modulos/musica-conversacion/vista-musica-fondo-conversacion.js",
+      "bytes": 1871,
+      "sha256": "0bda61b0b7984301f269aea6cdadcb6c64cada6c01a574f8a0ac1e2cb7fce9e8"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/modulos/notificaciones/catalogo-notificaciones-aplicacion.js",
+      "bytes": 807,
+      "sha256": "659dcac1f9fbcf85e8d9f56ec76f011160130cf811f61c45a11aea28bbeadec9"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/modulos/notificaciones/vista-notificaciones-aplicacion.js",
+      "bytes": 839,
+      "sha256": "b9ece749df247eb78aabcac8dc9a70ca846a230998916afa585e1539cfb3ba7e"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/modulos/personajes/catalogo/vista-catalogo-personajes.js",
+      "bytes": 2238,
+      "sha256": "aefc9ec2df5628a69028b780017d01b4fbe5280a917f9b12fc2b8162426912be"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/modulos/personajes/creador/construir-personaje-desde-formulario.js",
+      "bytes": 1499,
+      "sha256": "09b00539eb217e71c4a2f73bf7537559b454b1821abe2934eee67d0acc9bd879"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/modulos/personajes/creador/vista-crear-personaje.js",
+      "bytes": 4696,
+      "sha256": "d5fe1fadceda7f90179584daa35b47ba88e53dec7bfe174c4bee86ad2ab24564"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/modulos/personajes/detalles/vista-detalles-personaje.js",
+      "bytes": 2129,
+      "sha256": "69cb4c7e18de2e90f741cddebb2266e7491f0ad7e6ce10e71442f16194ff71fe"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/modulos/personajes/editor/actualizar-personaje-desde-formulario.js",
+      "bytes": 1174,
+      "sha256": "fb47af416973b8bd3754d0422ad9648ce89323235f46ee5240f83004357c8a16"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/modulos/personajes/editor/generar-campo-personaje-demostracion.js",
+      "bytes": 838,
+      "sha256": "7e0b252caa667e391ee2ffcaeac1dee3f7a3ae2ec5be24c33319d6330dd11303"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/modulos/personajes/editor/vista-editar-personaje.js",
+      "bytes": 5671,
+      "sha256": "f7554d374f3a052e5f94c82eb6f047153214341c3a07c58f86aa55407a072121"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/modulos/personajes/modificadores/descripcion-modificadores-temporales.js",
+      "bytes": 542,
+      "sha256": "1e753021518e9ab9307a5db20cdb3200981cf66c366f4a09df90e727ca8782ae"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/modulos/personajes/perfiles/personaje-demo-laboratorio.js",
+      "bytes": 2698,
+      "sha256": "33691ce85b56500f075011f6f4d4f7a9bae7449c30f26782b2e8414ea7a07c65"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/modulos/personajes/registro-personajes-disponibles.js",
+      "bytes": 633,
+      "sha256": "a4cd701e6a53742373e9cedb7f4a6a4016be0318feee8122f9209f489bdf1596"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/modulos/tarjetas-memoria/gestor-tarjetas-memoria.js",
+      "bytes": 1269,
+      "sha256": "8a92badeaaf86fe3fd098c7d3e378ce5196c079db4a19788b53d87e9e59995c7"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/modulos/voz-personaje/reproducir-texto-con-voz-dispositivo.js",
+      "bytes": 415,
+      "sha256": "63573f48bc0aed0f08fb4baeab3c9ccd087a634a1228ad56926066e57bdc4306"
+    },
+    {
+      "ruta": "aplicacion-cliente/aplicacion/navegacion-aplicacion/navegacion-entre-secciones.js",
+      "bytes": 201,
+      "sha256": "89b450058f5301645ac5aee8d46effc4300c739fced1b9eb2d43e9421ae857d7"
+    },
+    {
+      "ruta": "aplicacion-cliente/estilos/base/estructura-adaptable.css",
+      "bytes": 3345,
+      "sha256": "f0c9bcc4b441026a819c2c3802b0d433f753acc1daf8eb01e5997cc9a6eded97"
+    },
+    {
+      "ruta": "aplicacion-cliente/estilos/base/variables-visuales.css",
+      "bytes": 527,
+      "sha256": "0ee3a073e4396735128afccecdb75865833062d41937aa7e2b3859093d1dadff"
+    },
+    {
+      "ruta": "aplicacion-cliente/estilos/componentes/ajustes.css",
+      "bytes": 5470,
+      "sha256": "e5541dd6e1266995a4111872776e555e89cb413cb9fbd20177a30edfa188029f"
+    },
+    {
+      "ruta": "aplicacion-cliente/estilos/componentes/conversacion.css",
+      "bytes": 3995,
+      "sha256": "b793d7a13b1278efa558824bbbd283a4ea57b049fc18822de93fb8996384f80b"
+    },
+    {
+      "ruta": "aplicacion-cliente/estilos/componentes/modelos-ia.css",
+      "bytes": 2045,
+      "sha256": "a4d7331e51d5379e55f6b3b22903f2470603bc6223aee86e34825f4e65f06e9d"
+    },
+    {
+      "ruta": "aplicacion-cliente/estilos/componentes/notificaciones.css",
+      "bytes": 508,
+      "sha256": "a0d505965ecd1fc7274005754a3d28ef81136a6e8b7cc1ebbca864150c64d3ec"
+    },
+    {
+      "ruta": "aplicacion-cliente/estilos/componentes/personajes.css",
+      "bytes": 3464,
+      "sha256": "7beb0f5b58a64a9671847e05c2937783047c5f540c3d0b8cc4b6dacc91f05334"
+    },
+    {
+      "ruta": "aplicacion-cliente/index.html",
+      "bytes": 1308,
+      "sha256": "ba9a26b10ec3f40aa309b961cb4d10d9d0fa44b09fb809bafdf34b830c387928"
+    },
+    {
+      "ruta": "aplicacion-cliente/pruebas/ejecutar-pruebas-basicas.mjs",
+      "bytes": 2593,
+      "sha256": "b27e9ef971c419c783e0650fc0363054ac6df8da8b3af374bc2995e52890e243"
+    },
+    {
+      "ruta": "aplicacion-cliente/publico/iconos/zhy-companion-192.png",
+      "bytes": 1245,
+      "sha256": "94cfc15b561a89b23fce47344e67fee0cce212cdd2ef521a9d0db4d5e7c978e7"
+    },
+    {
+      "ruta": "aplicacion-cliente/publico/iconos/zhy-companion-512.png",
+      "bytes": 3567,
+      "sha256": "4060073fb5a5724cadfa9a45f9a83c1a6c9929e849ecad738e6c8154e0d44971"
+    },
+    {
+      "ruta": "aplicacion-cliente/publico/manifiesto.webmanifest",
+      "bytes": 569,
+      "sha256": "abc1cc9cb9994432ea19b84b1f46a2305d2f9f2481fe8aa45714b5e3b8c61588"
+    },
+    {
+      "ruta": "aplicacion-cliente/trabajador-servicio.js",
+      "bytes": 1323,
+      "sha256": "8c4b4edfb846c54c8850f1243af7c1997f3a2bf45a0e49f0d8ad01d0ef322f41"
+    },
+    {
+      "ruta": "capacitor.config.json",
+      "bytes": 139,
+      "sha256": "6add6bbd6c4abe585229658ac59529f0592339342b6bc8eb6fbd4507027444b9"
+    },
+    {
+      "ruta": "contratos-compartidos/solicitud-generacion.ejemplo.json",
+      "bytes": 440,
+      "sha256": "b6050483499a0c17643403bb2825063d680236a187a07792da05716759c41139"
+    },
+    {
+      "ruta": "documentacion/ARQUITECTURA-EN-ESPAÑOL.md",
+      "bytes": 1834,
+      "sha256": "e451d5061e8ff89a056b9b18ebbe14b99eacd4e8482f206b789dbc53ceca9376"
+    },
+    {
+      "ruta": "documentacion/COMPATIBILIDAD-EDITORES-Y-DISPOSITIVOS.md",
+      "bytes": 658,
+      "sha256": "851cad98f4395ac0fb66a715484b6950d77d5f3cc91b07d2660f4500ba61112a"
+    },
+    {
+      "ruta": "documentacion/CONFIGURAR-IA-Y-SERVIDOR.md",
+      "bytes": 2461,
+      "sha256": "e52f54ce5337ace65d8ca6e3f54937df7bb5a1a87132720bef67f35f75a02489"
+    },
+    {
+      "ruta": "documentacion/CREAR-APK-ANDROID.md",
+      "bytes": 1131,
+      "sha256": "8e39c3c6e5c7ad7174ab79f0d9645cf1b2dae1949eeba27006db9aba41be4865"
+    },
+    {
+      "ruta": "documentacion/DECISION-ARQUITECTURA-ESTABLE.md",
+      "bytes": 1438,
+      "sha256": "aba7b5816384ef35ef5f2110e49c3b4822d4ef6c5faab85800212bbce25d57b1"
+    },
+    {
+      "ruta": "documentacion/ESTADO-FUNCIONAL-v0.4.1.md",
+      "bytes": 1767,
+      "sha256": "9c1bec9435d28a1e36734b399a406be26be61c21a59d6fb9dd6508dc422fe082"
+    },
+    {
+      "ruta": "documentacion/FUNCIONES-INSPIRADAS-HIWAIFU.md",
+      "bytes": 837,
+      "sha256": "2fb88397e54b457a3d5d665934252b7d65b332c79ddf175633cbb5717077a1ee"
+    },
+    {
+      "ruta": "documentacion/GITHUB-Y-DESPLIEGUE.md",
+      "bytes": 1794,
+      "sha256": "cf44642519f5fc466ee5b7a7564f5af5d80ea1d67e792f36ecd99b843732ce4a"
+    },
+    {
+      "ruta": "documentacion/GUIA-DE-PRUEBA-PERSONAJE-DEMO.md",
+      "bytes": 692,
+      "sha256": "14c950bc1a7c9587304337552b4f0d72b9d365630e4993ab59323353a8b8e398"
+    },
+    {
+      "ruta": "documentacion/MODELOS-DE-IA.md",
+      "bytes": 420,
+      "sha256": "38aaf11c661d6390600b2750097470d5580574bac0dec45c79b8eb025237484d"
+    },
+    {
+      "ruta": "documentacion/README.md",
+      "bytes": 2238,
+      "sha256": "a96a98d7fc64e607792e9c9f584a8ecbc2c83b9cb1d6854b21109008f7a4bba8"
+    },
+    {
+      "ruta": "package.json",
+      "bytes": 555,
+      "sha256": "320cd2e72b13d0bc1d47628eea3448b6abe65ff28db08c9737a624ec5fdd59ad"
+    },
+    {
+      "ruta": "recursos-despliegue/preparar-android-linux-macos.sh",
+      "bytes": 356,
+      "sha256": "0e746b2f72a76e2c33a3c03fe242bbd876b08a5b7d7c1ce0a2b074e273387661"
+    },
+    {
+      "ruta": "recursos-despliegue/preparar-android-windows.ps1",
+      "bytes": 357,
+      "sha256": "7e3a5b724f48861aa2f74d33defa165b65a373a8d9e6af635dffeb845e8b862b"
+    },
+    {
+      "ruta": "recursos-despliegue/verificar-proyecto-windows.ps1",
+      "bytes": 272,
+      "sha256": "6f676705f266af7fcb0bf8f59acce02a4315dc8c16af9628f110015a240a0e28"
+    },
+    {
+      "ruta": "recursos-despliegue/verificar-proyecto.sh",
+      "bytes": 279,
+      "sha256": "38776fe78e8c037376286a6bcda624119b9e4ff1c6572f49b596ae43a4d189f8"
+    },
+    {
+      "ruta": "render.yaml",
+      "bytes": 1243,
+      "sha256": "4b94c404aa8e69ee9a56c63a0e817fb847152e882fbf2ba6ffa324e810a1845b"
+    },
+    {
+      "ruta": "servidor-inteligencia/.env.example",
+      "bytes": 873,
+      "sha256": "b27afe34ec471361d38f29d5e67bd3270fcede73775b76b63fe8dedcdf32ccea"
+    },
+    {
+      "ruta": "servidor-inteligencia/Dockerfile",
+      "bytes": 265,
+      "sha256": "fab45963435ed9348d7eacba723078a2104ee88ecc59bbbe07f6adbf675f01df"
+    },
+    {
+      "ruta": "servidor-inteligencia/README.md",
+      "bytes": 425,
+      "sha256": "682658423c3103d8b4c8a3d4067cb5ae5a034784ef4bb95a869eedfbcf04fa76"
+    },
+    {
+      "ruta": "servidor-inteligencia/pruebas/test_construccion_prompt.py",
+      "bytes": 715,
+      "sha256": "8827eae58c4d7ee6c2fcbf1e574672f3bf12b571ec65e7e964a7dcc13701345e"
+    },
+    {
+      "ruta": "servidor-inteligencia/pruebas/test_memoria_heuristica.py",
+      "bytes": 312,
+      "sha256": "f4f24529f5d028421b9bbba1b390b6a1410d1af28de266ab467a6be9cb31fe72"
+    },
+    {
+      "ruta": "servidor-inteligencia/requirements-dev.txt",
+      "bytes": 48,
+      "sha256": "4dd349bb787bc43441ecc57f339f9b96ffb401be93026c3c2a87c34c3ee8a67e"
+    },
+    {
+      "ruta": "servidor-inteligencia/requirements.txt",
+      "bytes": 150,
+      "sha256": "90b74bd535c06c74d4136a915e3d2dbc731d9d6d7289f776f5e3a7a191588052"
+    },
+    {
+      "ruta": "servidor-inteligencia/src/zhy_companion_servidor/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ruta": "servidor-inteligencia/src/zhy_companion_servidor/almacenamiento_persistente/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ruta": "servidor-inteligencia/src/zhy_companion_servidor/almacenamiento_persistente/conexion_base_datos.py",
+      "bytes": 733,
+      "sha256": "b5d084c28f73c587db488728d6eac5ebdc82d704016e6b6725fb6ead03452b5d"
+    },
+    {
+      "ruta": "servidor-inteligencia/src/zhy_companion_servidor/almacenamiento_persistente/inicializar_esquema.py",
+      "bytes": 498,
+      "sha256": "6510b60cdb83faa6487644f0d32143e92d43a9e366a71c8e6e9209968a3343ba"
+    },
+    {
+      "ruta": "servidor-inteligencia/src/zhy_companion_servidor/api_http/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ruta": "servidor-inteligencia/src/zhy_companion_servidor/api_http/rutas_generacion.py",
+      "bytes": 1419,
+      "sha256": "58c2dc4fc1c7a4d92b7b7967e300167d7805d54c8f12a0a93320e004707910c2"
+    },
+    {
+      "ruta": "servidor-inteligencia/src/zhy_companion_servidor/api_http/rutas_memoria.py",
+      "bytes": 821,
+      "sha256": "052607acde36821c14cad8a74559e618f8d92759129ee00f772ce6d27e573ba2"
+    },
+    {
+      "ruta": "servidor-inteligencia/src/zhy_companion_servidor/api_http/rutas_modelos.py",
+      "bytes": 568,
+      "sha256": "600e27b59e2e07692c5d28ac617764eca25e8a98cf3b1cee06f58403691160c7"
+    },
+    {
+      "ruta": "servidor-inteligencia/src/zhy_companion_servidor/api_http/rutas_salud.py",
+      "bytes": 1009,
+      "sha256": "7c3d18094e97138144fa65474ec72c8e4126bf371824a024be520996f4435ef6"
+    },
+    {
+      "ruta": "servidor-inteligencia/src/zhy_companion_servidor/api_http/rutas_sesion.py",
+      "bytes": 743,
+      "sha256": "2b765a71015163264f2f8093acaba2ab50926ecfb8be774297c7dda8e92dba22"
+    },
+    {
+      "ruta": "servidor-inteligencia/src/zhy_companion_servidor/configuracion_servidor/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ruta": "servidor-inteligencia/src/zhy_companion_servidor/configuracion_servidor/configuracion_entorno.py",
+      "bytes": 1615,
+      "sha256": "ca267f090d264ecfe2a8ae8674d4db4b1b9e1ee56c83d43d6aef472ed9da8538"
+    },
+    {
+      "ruta": "servidor-inteligencia/src/zhy_companion_servidor/generacion_respuestas/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ruta": "servidor-inteligencia/src/zhy_companion_servidor/generacion_respuestas/construir_mensajes_modelo.py",
+      "bytes": 1833,
+      "sha256": "ed198eae1b8280dbc5b3551dc1bca639a1de2154316fa7d1ba6d1b93c760d898"
+    },
+    {
+      "ruta": "servidor-inteligencia/src/zhy_companion_servidor/generacion_respuestas/coordinador_generacion.py",
+      "bytes": 354,
+      "sha256": "e7fbdde6ddea682f7d6a4bcb7a071ff082d5873dbda20d355c12b18d06585243"
+    },
+    {
+      "ruta": "servidor-inteligencia/src/zhy_companion_servidor/generacion_respuestas/enrutador_modelos_litellm.py",
+      "bytes": 2030,
+      "sha256": "bc18b64099f4e646548db5526b6b25c8035c91e390affa82f24c08a438b93552"
+    },
+    {
+      "ruta": "servidor-inteligencia/src/zhy_companion_servidor/iniciar_servidor.py",
+      "bytes": 1410,
+      "sha256": "cd2acfaa618eea0fd4b23759fcc22ff569883a4f38a3d2c83b92645d79c88c08"
+    },
+    {
+      "ruta": "servidor-inteligencia/src/zhy_companion_servidor/memoria_automatica/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ruta": "servidor-inteligencia/src/zhy_companion_servidor/memoria_automatica/extractor_recuerdos_heuristico.py",
+      "bytes": 1593,
+      "sha256": "f9914bed2cbeba6a9654b6452ee55aadc2f3da3375075713f05c7b4722152044"
+    },
+    {
+      "ruta": "servidor-inteligencia/src/zhy_companion_servidor/modelos_datos/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ruta": "servidor-inteligencia/src/zhy_companion_servidor/modelos_datos/memoria.py",
+      "bytes": 417,
+      "sha256": "6d5e532925e55dcab565fafbac8c3b3e4b2813b59171fb8492139192d1858236"
+    },
+    {
+      "ruta": "servidor-inteligencia/src/zhy_companion_servidor/modelos_datos/respuesta_generacion.py",
+      "bytes": 217,
+      "sha256": "73ac4ac4154dbfbb7c70b1e80af1b178a4f0ba0a669d8293f71daa2c8eff3030"
+    },
+    {
+      "ruta": "servidor-inteligencia/src/zhy_companion_servidor/modelos_datos/sesion.py",
+      "bytes": 176,
+      "sha256": "3d064fb433eae2cb0a0ba8d94c4503e5d26d92978e108b2032e3d0585b72eec8"
+    },
+    {
+      "ruta": "servidor-inteligencia/src/zhy_companion_servidor/modelos_datos/solicitud_generacion.py",
+      "bytes": 546,
+      "sha256": "8db880967df7378623deaba808dbba6b888282a3be647d7f29fee56c5349ac63"
+    },
+    {
+      "ruta": "servidor-inteligencia/src/zhy_companion_servidor/seguridad_acceso/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ruta": "servidor-inteligencia/src/zhy_companion_servidor/seguridad_acceso/dependencia_sesion.py",
+      "bytes": 607,
+      "sha256": "7de2905d07b8872e3afba0fe7690d4f742aab71ff679919c0c67d7d997458fb9"
+    },
+    {
+      "ruta": "servidor-inteligencia/src/zhy_companion_servidor/seguridad_acceso/limitador_solicitudes.py",
+      "bytes": 747,
+      "sha256": "be4be9ac6aa74eb565f263981c304378d20ecdc6a7ebbcceb2d74838705f5d84"
+    },
+    {
+      "ruta": "servidor-inteligencia/src/zhy_companion_servidor/seguridad_acceso/tokens_sesion.py",
+      "bytes": 1402,
+      "sha256": "cf684863d432e15cfdd1e6310c15e2da101ef9c1e5a9085265a247275a3b137d"
+    },
+    {
+      "ruta": "servidor-inteligencia/src/zhy_companion_servidor/seguridad_acceso/verificar_contrasena_aplicacion.py",
+      "bytes": 434,
+      "sha256": "0bf47e25b36b73176e827af3264bdc5efd8e445aaa1ddfc210001d776e878ce1"
+    }
+  ]
+}
